@@ -21,7 +21,7 @@ export default function Planilla() {
   return (
     <div>
       <center>
-      <button class="btn btn-light btn-lg mt-4 mb-4" onClick={() => calcular()}>Calcular Sueldos</button>
+        <button class="btn btn-light btn-lg mt-4 mb-4" onClick={() => calcular()}>Calcular Sueldos</button>
       </center>
       <div class="table-responsive">
 
@@ -37,15 +37,42 @@ export default function Planilla() {
               <th> Bonificación </th></tr>
           </thead>
           <tbody>
-            {sueldos.map((sueldo) => <SalaryRow key={sueldo.id}
-              rut={sueldo.rut_empleado}
-              nombre={sueldo.nombre_empleado}
-              apellido={sueldo.apellido_empleado}
-              categoria={sueldo.categoria}
-              años_servicio={sueldo.anios_servicio}
-              sueldo_fijo={sueldo.sueldo_fijo}
-              bonificacion={sueldo.bonificacion}
-            />)}
+          <tr>
+            <th scope="row">1-9</th>
+            <td>Juan</td>
+            <td>Euclevio</td>
+            <td>A</td>
+            <td>12</td>
+            <td>1.700.000</td>
+            <td>8%</td>
+          </tr>
+          <tr>
+            <th scope="row">2-9</th>
+            <td>Pedro</td>
+            <td>Ramon</td>
+            <td>B</td>
+            <td>2</td>
+            <td>1.200.000</td>
+            <td>0%</td>
+          </tr>
+          <tr>
+            <th scope="row">3-9</th>
+            <td>Maria</td>
+            <td>Maria</td>
+            <td>C</td>
+            <td>7</td>
+            <td>800.000</td>
+            <td>5%</td>
+          </tr>
+          <tr>
+            <th scope="row">4-9</th>
+            <td>Jose</td>
+            <td>Marin</td>
+            <td>C</td>
+            <td>4</td>
+            <td>800.000</td>
+            <td>0%</td>
+          </tr>
           </tbody>
         </table></div>
     </div>
