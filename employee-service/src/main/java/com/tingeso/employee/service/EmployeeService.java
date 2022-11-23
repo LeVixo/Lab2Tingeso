@@ -4,6 +4,8 @@ import com.tingeso.employee.entity.Employee;
 import com.tingeso.employee.entity.ExtraHours;
 import com.tingeso.employee.entity.Justificative;
 import com.tingeso.employee.repository.EmployeeRepository;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,34 +20,19 @@ public class EmployeeService {
   @Autowired
   RestTemplate restTemplate;
 
-  public List<Employee> getAll() {
-    return employeeRepository.findAll();
+  public ArrayList<Employee> getEmployees(){
+      return (ArrayList<Employee>) employeeRepository.findAll();
   }
 
-  public Employee getEmployeeByRut(String id) {
-    return employeeRepository.findById(id).orElse(null);
+  public Employee saveEmployee(Employee employee){
+      return employeeRepository.save(employee);
   }
 
-  public Employee save(Employee employee) {
-    Employee employeeNew = employeeRepository.save(employee);
-    return employeeNew;
+  public Employee getEmployeeByRut(String rut){
+      return employeeRepository.findByRut(rut);
   }
 
-  @SuppressWarnings("unchecked")
-  public List<Justificative> getJustificatives(String employeeId) {
-    List<Justificative> justificatives = restTemplate.getForObject(
-      "http://justificative-service/justificatives/byemployee/" + employeeId,
-      List.class
-    );
-    return justificatives;
-  }
-
-  @SuppressWarnings("unchecked")
-  public List<ExtraHours> getExtraHours(String employeeId) {
-    List<ExtraHours> extra_hours = restTemplate.getForObject(
-      "http://extra-hours-service/extra-hours/byemployee/" + employeeId,
-      List.class
-    );
-    return extra_hours;
+  public ArrayList<Employee> getAllEmployees(){
+      return (ArrayList<Employee>) employeeRepository.findAll();
   }
 }

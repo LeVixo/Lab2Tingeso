@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Justificative {
-  private Date date;
+  private int day;
+  private int month;
   private String rut_employee;
 }

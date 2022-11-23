@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ExtraHours {
-    private Date date;
-    private Integer n_hours;
+    private Integer horas_extra;
     private String rut_employee;
 }

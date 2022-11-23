@@ -19,28 +19,17 @@ public class TimeStampController {
     @Autowired
     private TimeStampService timestampService;
 
-    @GetMapping
-    public ResponseEntity<List<Timestamp>> getAll() {
-        List<Timestamp> timestamps = timestampService.getAll();
-        if(timestamps.isEmpty())
-            return ResponseEntity.noContent().build();
-        return ResponseEntity.ok(timestamps);
-    }
-    @GetMapping("/byemployee/{rut}/{date}")
-    public ResponseEntity<Timestamp> getByEmployee(@PathVariable("rut") String rut, @PathVariable("date") String date) throws ParseException {
-        Timestamp timestamps = timestampService.get_dia_trabajado(rut, date);
-        if(timestamps == null)
-            return ResponseEntity.noContent().build();
-        return ResponseEntity.ok(timestamps);
-    }
-    @GetMapping("/date")
-    public Date getDate() {
-        return timestampService.get_start_date();
-    }
-    @PostMapping()
-    public void saveTxt(@RequestParam("file") MultipartFile file, RedirectAttributes ms) throws FileNotFoundException, ParseException {
-        System.out.println("Test");
-        timestampService.save(file);
-        timestampService.readFile();
-    }
+    @GetMapping("/reloj")
+	public String reloj() {
+		return "reloj";
+	}
+	
+	@PostMapping("/cargar")
+	public String carga( @RequestParam("archivos") MultipartFile file, RedirectAttributes ms) {
+		upload.save(file);
+		ms.addFlashAttribute("mensaje", "Archivo cargado correctamente");
+	
+		registrationService.uploadFile(file);
+		return "redirect:/reloj";
+	}
 }

@@ -24,22 +24,12 @@ public class ExtraHours {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", unique = true, nullable = false)
   private Integer id;
-
-  @Getter
-  @Setter
-  private Date date;
-
-  @Getter
-  @Setter
-  private Integer n_hours;
-
+  
   @Getter
   @Setter
   private String rut_employee;
 
-  public ExtraHours(Date date, String rut_employee, Integer n_hours) {
-    this.date = date;
-    this.rut_employee = rut_employee;
-    this.n_hours = n_hours;
-  }
+  @Getter
+  @Setter
+  private int extraHours;
 }

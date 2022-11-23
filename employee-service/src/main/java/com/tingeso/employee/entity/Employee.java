@@ -17,10 +17,11 @@ import javax.persistence.Table;
 
 public class Employee {
     @Id
-    @Getter @Setter private String rut;
-    @Getter @Setter private String name;
-    @Getter @Setter private String last_name;
-    @Getter @Setter private String category;
-    @Getter @Setter private String birth_date;
-    @Getter @Setter private String entry_date;
+    private String rut;
+    
+    private String name;
+    private String secondname;
+    private String category;
+    private int monthIncorporation;
+    private int yearIncorporation;
 }
