@@ -1,0 +1,10 @@
+spring:
+  devtools:
+    restart:
+      aditional-paths: src/main/java
+  application:
+    name: salarie-service
+  cloud:
+    config:
+      enabled: true
+      uri: http://${HOSTNAME:localhost}:8081

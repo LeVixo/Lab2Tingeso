@@ -1,0 +1,50 @@
+server:
+  port: 8080
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://${EUREKA:localhost}:8761/eureka
+  instance:
+    hostname: ${EUREKA:localhost}
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origin-patterns: '*'
+            allowed-methods: "*"
+            allowed-headers: "*"
+            allow-credentials: true          
+      routes:
+        - id: employee-service
+          uri: lb://employee-service
+          predicates:
+            - Path=/employees/**
+        - id: timestamp-service
+          uri: lb://timestamp-service
+          predicates:
+            - Path=/timestamps/**
+        - id: justificative-service
+          uri: lb://justificative-service
+          predicates:
+            - Path=/justificatives/**
+        - id: extra-hours-service
+          uri: lb://extra-hours-service
+          predicates:
+            - Path=/extra-hours/**
+        - id: officeRRHH-service
+          uri: lb://officeRRHH-service
+          predicates:
+            - Path=/officeRRHH/**
+        - id: salarie-service
+          uri: lb://salarie-service
+          predicates:
+            - Path=/salaries/**
